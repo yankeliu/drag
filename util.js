@@ -288,7 +288,7 @@ function addEnterEvent(element, listener) {
  */
 function delegateEvent(element, tag, eventName, listener) {
     // your implement
-    return addEvent(element, eventName, function(ev) {
+     addEvent(element, eventName, function(ev) {
         var oEvent = ev || event; //兼容处理
         var target = oEvent.target || oEvent.srcElement; //兼容处理
         if (target.tagName.toLocaleLowerCase() === tag) {

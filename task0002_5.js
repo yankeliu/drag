@@ -10,15 +10,20 @@ window.onload=function(){
         this.style.zIndex=indz;
         this.style.opacity=0.3;
         var Oeven=ev||event;
-        var disX=Oeven.clientX-this.offsetLeft;//鼠标到移动元素左边缘的距离
-        var disY=Oeven.clientY-this.offsetTop;
+        var disX=Oeven.pageX-this.offsetLeft;//鼠标到移动元素左边缘的距离
+        var disY=Oeven.pageY-this.offsetTop;
+        console.log(Oeven.pageY);
+        console.log(this.offsetTop);
 
         //在原位置创建li元素
         var newli=document.createElement('li');
         this.parentElement.appendChild(newli);
         addClass(newli,"newli");
-        newli.style.left=this.offsetLeft+'px';
+        newli.style.left=this.offsetLeft + 'px';
+        console.log(newli.offsetLeft);
         newli.style.top=this.offsetTop+'px';
+        newli.style.position = "absolute";
+        console.log(newli.offsetTop);
         
         var moveEle=this;
         
@@ -27,17 +32,18 @@ window.onload=function(){
         
         
         function onmousemove(ev){//鼠标移动函数
+  
             var Oev=ev||event;
-            var liLeft=Oev.clientX-disX;
-            var litop=Oev.clientY-disY;
+            var liLeft=Oev.pageX-disX;
+            
+            var litop=Oev.pageY-disY;
             /*if (oriX!=Oev.clientX ||oriY!=Oev.clientY){
                 var movevalue=true;
             }*/
-            var maxWidth=document.body.clientWidth||document.documentElement.clientWidth;
-            var maxLeft=maxWidth-moveEle.offsetWidth;
-            
-            var maxHeight=document.body.clientHeight||document.documentElement.clientHeight;
-            var maxTop =maxHeight-moveEle.offsetHeight;
+            var maxLeft=innerWidth-moveEle.offsetWidth;
+    
+ 
+            var maxTop =innerHeight-moveEle.offsetHeight;
             
             //检测是否碰到客户端边缘
             if(liLeft<0){
