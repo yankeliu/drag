@@ -12,18 +12,16 @@ window.onload=function(){
         var Oeven=ev||event;
         var disX=Oeven.pageX-this.offsetLeft;//鼠标到移动元素左边缘的距离
         var disY=Oeven.pageY-this.offsetTop;
-        console.log(Oeven.pageY);
-        console.log(this.offsetTop);
 
         //在原位置创建li元素
         var newli=document.createElement('li');
         this.parentElement.appendChild(newli);
         addClass(newli,"newli");
         newli.style.left=this.offsetLeft + 'px';
-        console.log(newli.offsetLeft);
+
         newli.style.top=this.offsetTop+'px';
         newli.style.position = "absolute";
-        console.log(newli.offsetTop);
+
         
         var moveEle=this;
         
@@ -35,13 +33,13 @@ window.onload=function(){
   
             var Oev=ev||event;
             var liLeft=Oev.pageX-disX;
-            
+           // console.log(liLeft);
             var litop=Oev.pageY-disY;
             /*if (oriX!=Oev.clientX ||oriY!=Oev.clientY){
                 var movevalue=true;
             }*/
-            var maxLeft=innerWidth-moveEle.offsetWidth;
-    
+            var maxLeft=document.body.scrollWidth-moveEle.offsetWidth;
+          //  console.log(maxLeft)
  
             var maxTop =innerHeight-moveEle.offsetHeight;
             
@@ -50,6 +48,7 @@ window.onload=function(){
                 liLeft=0;
             }
             else if(liLeft>maxLeft){
+                console.log('超出')
                 liLeft=maxLeft;
             }
             if (litop<0){
