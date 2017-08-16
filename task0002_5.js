@@ -41,7 +41,7 @@ window.onload=function(){
             var maxLeft=document.body.scrollWidth-moveEle.offsetWidth;
           //  console.log(maxLeft)
  
-            var maxTop =innerHeight-moveEle.offsetHeight;
+            var maxTop =document.body.scrollHeight-moveEle.offsetHeight;
             
             //检测是否碰到客户端边缘
             if(liLeft<0){
